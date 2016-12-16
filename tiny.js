@@ -121,6 +121,7 @@ var Tiny = function () {
         route.params.forEach(function (key) {
             thisObj.routeParams[key] = routeParams[i];
             args += 'thisObj.routeParams.' + key + ', ';
+            i++;
         });
 
         args = args.replace(/(,\s){1}$/, '');
