@@ -63,7 +63,7 @@ var Tiny = function () {
                     if (route.hash === hash) {
                         thisObj.location = route.hash;
                         if (route.hasOwnProperty('params')) {
-                            route.method(eval(thisObj.setRouteParams(route)));
+                            route.method.apply(this, thisObj.routeParams);
                         } else {
                             route.method();
                         }
@@ -83,7 +83,7 @@ var Tiny = function () {
                             if (route.hash === hash) {
                                 thisObj.location = route.hash;
                                 if (route.hasOwnProperty('params')) {
-                                    route.method(eval(thisObj.setRouteParams(route)));
+                                    route.method.apply(this, thisObj.routeParams);
                                 } else {
                                     route.method();
                                 }
@@ -111,24 +111,6 @@ var Tiny = function () {
         return route;
     }
 
-    this.setRouteParams = function(route) {
-
-        var routeParams = thisObj.routeParams;
-        thisObj.routeParams = {};
-        var i = 0;
-        var args = '';
-
-        route.params.forEach(function (key) {
-            thisObj.routeParams[key] = routeParams[i];
-            args += 'thisObj.routeParams.' + key + ', ';
-            i++;
-        });
-
-        args = args.replace(/(,\s){1}$/, '');
-
-        return args;
-    }
-
     this.listen = function() {
 
        if ("onhashchange" in window) {
@@ -140,7 +122,7 @@ var Tiny = function () {
                     if (route.hash === hash) {
                         thisObj.location = route.hash;
                         if (route.hasOwnProperty('params')) {
-                            route.method(eval(thisObj.setRouteParams(route)));
+                            route.method.apply(this, thisObj.routeParams);
                         } else {
                             route.method();
                         }
@@ -169,7 +151,7 @@ var Tiny = function () {
 
                     thisObj.routes.forEach(function(route) {
                         if (route.hasOwnProperty('params')) {
-                            route.method(eval(thisObj.setRouteParams(route)));
+                            route.method.apply(this, thisObj.routeParams);
                         } else {
                             route.method();
                         }
@@ -183,7 +165,7 @@ var Tiny = function () {
         thisObj.routes.forEach(function(route) {
             if (route.hash === hash) {
                 if (route.hasOwnProperty('params')) {
-                    route.method(eval(thisObj.setRouteParams(route)));
+                    route.method.apply(this, thisObj.routeParams);
                 } else {
                     route.method();
                 }
