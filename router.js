@@ -141,7 +141,6 @@ function Router(config) {
         var l = patterns.url.length;
         for (var i = 0; i < l; i++) {
             var matches = self.getPath().match(new RegExp(patterns.url[i]));
-            console.log(self.getPath(), patterns.url[i]);
             if (matches) {
                 actions[patterns.url[i]].apply(this, getParams(matches));
                 return true;
