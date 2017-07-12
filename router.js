@@ -174,14 +174,15 @@ function Router(config) {
         }
 
         var cached = localStorage.getItem('_router'+uniqueId);
-        if (!cached) {
-            callback();
-            localStorage.setItem('_router'+uniqueId, JSON.stringify({"routes": routes, "actions": actions, "patterns": patterns}));
-        }
 
-        routes = cached["routes"];
-        patterns = cached["patterns"];
-        actions = cached["actions"];
+        if (!cached) {
+            callback(this);
+            localStorage.setItem('_router'+uniqueId, {"routes": routes, "actions": actions, "patterns": patterns});
+        } else {
+            routes = cached["routes"];
+            patterns = cached["patterns"];
+            actions = cached["actions"];
+        }
     }
 
     var construct = function (config) {
