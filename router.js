@@ -168,23 +168,6 @@ function Router(config) {
        }
     }
 
-    this.cache = function (callback, uniqueId) {
-        if (typeof uniqueId === 'undefined') {
-            uniqueId = '';
-        }
-
-        var cached = localStorage.getItem('_router'+uniqueId);
-
-        if (!cached) {
-            callback(this);
-            localStorage.setItem('_router'+uniqueId, {"routes": routes, "actions": actions, "patterns": patterns});
-        } else {
-            routes = cached["routes"];
-            patterns = cached["patterns"];
-            actions = cached["actions"];
-        }
-    }
-
     var construct = function (config) {
         if (config && config.hasOwnProperty('hybrid') && config['hybrid'] === true) {
             var a = document.getElementsByClassName(self.className);
