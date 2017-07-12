@@ -40,3 +40,20 @@ Turning the listeners (router) on
 ```javascript
 router.listen();
 ```
+
+Set a default action for empty hash
+```javascript
+router.defaultHashAction = function() {
+    //Do something
+};
+```
+
+Getters
+```javascript
+router.getRoutes();
+
+router.getRoute(0);
+router.getRoute('/foo');
+
+router.getRouteAction(router.getRoute(0));
+```
