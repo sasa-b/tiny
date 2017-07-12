@@ -2,7 +2,7 @@
 A small hash and history api router suitable for hybrid web apps which use both the SPA and traditional approach at the same time.
 
 # API / USAGE EXAMPLES
-1. ```javascript
+```javascript
 var router = new Router();
 ```
 or
@@ -36,3 +36,7 @@ router.addRoute('/foo/{bar}', function(bar) {
 });
 ```
 
+Turning the listeners (router) on
+```javascript
+router.listen();
+```
