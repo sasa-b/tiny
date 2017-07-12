@@ -1,7 +1,7 @@
-# tiny
+# Tiny
 A small hash and history api router suitable for hybrid web apps which use both the SPA and traditional approach at the same time.
 
-# API / USAGE EXAMPLES
+## API / USAGE EXAMPLES
 ```javascript
 var router = new Router();
 ```
