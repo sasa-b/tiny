@@ -191,7 +191,7 @@ function Router(config) {
         }
     }(config);
 
-    window.addEventListener('load', function () {
+    window.addEventListener('DOMContentLoaded', function () {
         self.urlMatch();
         self.hashMatch();
     });
